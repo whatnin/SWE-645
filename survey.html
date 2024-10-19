@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta information about the page -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title of the page -->
+    <title>Student Survey form</title>
+
+    <!-- Inline CSS styles -->
+    <style>
+        /* Style for the overall body */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #d3d3d3; /* Light gray background */
+        }
+
+        /* Container for the form content */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white; /* White background for the form */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        /* Style for the main heading */
+        h1 {
+            text-align: center;
+            color: #006633; /* GMU green */
+            background-color: #FFCC33; /* GMU yellow */
+            padding: 20px;
+            border: 5px solid #006633; /* Green border */
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Shadow for effect */
+            border-radius: 8px; /* Rounded border */
+        }
+
+        /* General form styling */
+        form {
+            display: flex;
+            flex-direction: column; /* Form items displayed vertically */
+        }
+
+        /* Style for form labels */
+        label {
+            margin: 10px 0 5px;
+        }
+
+        /* Input field styling */
+        input, textarea, select {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px; /* Rounded input fields */
+            width: 100%;
+        }
+
+        /* Style for checkbox and radio button labels */
+        input[type="checkbox"], input[type="radio"] {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        /* Required field asterisk */
+        .required {
+            color: red;
+        }
+
+        /* Style for inline labels, like for checkboxes and radio buttons */
+        .inline-label {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        /* Style for the submit and cancel buttons */
+        .btn-submit {
+            background-color: #006633; /* GMU green */
+            color: #FFCC33; /* GMU yellow */
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .btn-submit:hover {
+            background-color: #004c26; /* Darker green on hover */
+        }
+
+        /* Cancel button styling - changed to red */
+        .btn-cancel {
+            background-color: red; /* Red cancel button */
+            color: white; /* White text */
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .btn-cancel:hover {
+            background-color: darkred; /* Darker red on hover */
+        }
+
+        
+     /* Footer */
+    .footer {
+      background-color: #FFCC33; 
+      color: #006633; 
+      padding: 20px 0; /*  padding for more space */
+      font-size: 1.1rem; /* Larger font size for readability */
+      text-align: center;
+    }
+
+    /* Footer styling */
+    .footer a {
+      color: #006633; 
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    </style>
+</head>
+<body>
+
+<!-- Main container  -->
+<div class="container">
+    <!-- Main heading  -->
+    <h1>Student Survey form</h1>
+
+    <!-- Start form -->
+    <form action="#" method="post" autocomplete="on">
+        <!-- First Name  -->
+        <label for="firstName">First Name <span class="required">*</span></label>
+        <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required autofocus>
+
+        <!-- Last Name -->
+        <label for="lastName">Last Name <span class="required">*</span></label>
+        <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+        
+        <!-- Street Address  -->
+        <label for="street">Street Address <span class="required">*</span></label>
+        <input type="text" id="street" name="street" placeholder="Enter your street address" required>
+        
+        <!-- City  -->
+        <label for="city">City <span class="required">*</span></label>
+        <input type="text" id="city" name="city" placeholder="Enter your city" required>
+        
+        <!-- State -->
+        <label for="state">State <span class="required">*</span></label>
+        <input type="text" id="state" name="state" placeholder="Enter your state" required>
+        
+        <!-- Zip Code  -->
+        <label for="zip">Zip Code <span class="required">*</span></label>
+        <input type="text" id="zip" name="zip" placeholder="Enter your zip code" required pattern="\d{5}" title="Please enter a valid 5-digit zip code">
+        
+        <!-- Telephone Number  -->
+        <label for="phone">Telephone Number <span class="required">*</span></label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required pattern="^\d{10}$" title="Please enter a 10-digit phone number">
+        
+        <!-- Email  -->
+        <label for="email">Email Address <span class="required">*</span></label>
+        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+        
+        <!-- Date of Survey  -->
+        <label for="date">Date of Survey <span class="required">*</span></label>
+        <input type="date" id="date" name="date" required>
+        
+        <!-- Checkbox for campus preferences -->
+        <label>What did you like most about the campus? <span class="required">*</span></label>
+        <div>
+            <input type="checkbox" id="students" name="liked" value="Students">
+            <label class="inline-label" for="students">Students</label>
+
+            <input type="checkbox" id="location" name="liked" value="Location">
+            <label class="inline-label" for="location">Location</label>
+
+            <input type="checkbox" id="campus" name="liked" value="Campus">
+            <label class="inline-label" for="campus">Campus</label>
+
+            <input type="checkbox" id="atmosphere" name="liked" value="Atmosphere">
+            <label class="inline-label" for="atmosphere">Atmosphere</label>
+
+            <input type="checkbox" id="dorms" name="liked" value="Dorm Rooms">
+            <label class="inline-label" for="dorms">Dorm Rooms</label>
+
+            <input type="checkbox" id="sports" name="liked" value="Sports">
+            <label class="inline-label" for="sports">Sports</label>
+        </div>
+
+        <!-- Radio button for university interest -->
+        <label>How did you become interested in the university? <span class="required">*</span></label>
+        <div>
+            <input type="radio" id="friends" name="interest" value="Friends" required>
+            <label class="inline-label" for="friends">Friends</label>
+
+            <input type="radio" id="tv" name="interest" value="Television" required>
+            <label class="inline-label" for="tv">Television</label>
+
+            <input type="radio" id="internet" name="interest" value="Internet" required>
+            <label class="inline-label" for="internet">Internet</label>
+
+            <input type="radio" id="other" name="interest" value="Other" required>
+            <label class="inline-label" for="other">Other</label>
+        </div>
+
+        <!-- Dropdown for likelihood of recommending the university -->
+        <label for="recommend">How likely are you to recommend this school to others? <span class="required">*</span></label>
+        <select id="recommend" name="recommend" required>
+            <option value="">Select an option</option>
+            <option value="Very Likely">Very Likely</option>
+            <option value="Likely">Likely</option>
+            <option value="Unlikely">Unlikely</option>
+        </select>
+
+        <!-- Raffle input -->
+        <label for="raffle">Raffle (Enter atleast ten comma separated numbers ranging from 1 through 100) <span class="required">*</span></label>
+        <input type="text" id="raffle" name="raffle" placeholder="E.g., 5, 12, 25, ..." required pattern="^([1-9][0-9]?(,[1-9][0-9]?){9})$" title="Please enter 10 comma-separated numbers between 1 and 100.">
+         
+        <!-- Comments input -->
+        <label for="comments">Additional Comments</label>
+        <textarea id="comments" name="comments" rows="5" placeholder="Enter your comments here"></textarea>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn-submit">Submit Survey</button>
+        <!-- Cancel button -->
+        <button type="reset" class="btn-cancel">Cancel</button>
+    </form>
+
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>&copy; 2024 SaiChinmayee Yanamadala rights reserved</p>
+    <img src="gmu-logo.png" alt="University Logo" width="100">
+  </footer>
+
+</body>
+</html>

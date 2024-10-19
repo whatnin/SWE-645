@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yanamadala Sai Chinmayee's Portfolio</title>
+  
+  <!-- W3CSS and Google Fonts for styling -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+  
+  <!-- Bootstrap CSS for responsive layout and styling -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <!-- Custom CSS for page design -->
+  <style>
+    /* General body and html styling */
+    body, html {
+      height: 100%;
+      font-family: "Inconsolata", sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #000;
+      background-color: #f8f9fa; /* Light gray background */
+    }
+
+    /* Header box styling */
+    .header-box {
+      border: 5px solid #006633; /* GMU Green */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      padding: 20px;
+      background-color: #fff;
+      margin-bottom: 20px;
+    }
+
+    /* Background image container styling */
+    .bgimg {
+      background-position: center;
+      background-size: cover;
+      background-image: url("background-image.jpg"); /*image path */
+      min-height: 65vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Text styling for the background image container */
+    .bgimg .text {
+      color: #006633;
+      font-size: 3rem; 
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+
+    /* Footer styling */
+    .footer {
+      background-color: #FFCC33; 
+      color: #006633; 
+      padding: 20px 0; 
+      font-size: 1.1rem; 
+      text-align: center;
+    }
+
+    /* Footer link styling */
+    .footer a {
+      color: #006633; 
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Project item box styling */
+    .project-item {
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Image styling within project items */
+    .project-item img {
+      max-width: 100%;
+      border-radius: 5px;
+    }
+
+    /* Additional styling for centering text */
+    .text-center {
+      text-align: center;
+    }
+
+    /* Styling for smaller project images */
+    .smaller-image {
+      max-width: 100%; 
+      height: auto; 
+    }
+
+    /* Container for main content */
+    .ccontainer {
+      background-color: white;
+      margin-top: 20px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+
+    /* Header section with a background image */
+    .header {
+      background-image: url('mainbg.png'); /* background image */
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      min-height: 120px; 
+      display: flex;
+      align-items: center; 
+      justify-content: center; 
+      color: #fff; 
+    }
+
+    /* Header content box styling */
+    .header-content {
+      background-color: #fff; /* background */
+      padding: 20px; 
+      border-radius: 8px; 
+      box-shadow: 0 4px 8px rgba(13, 158, 45, 0.2); 
+    }
+
+    /* Header title text styling */
+    .header-content h1 {
+      margin: 0; 
+      font-size: 2.5rem; 
+      color: #000000; 
+    }
+
+    /* Link underline styling */
+    a {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#home">Home</a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+      <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+      <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Header Section -->
+<header class="header text-center py-5">
+  <div class="header-content">
+    <h1 class="display-4">Yanamadala Sai Chinmayee</h1> <!-- Main Title -->
+  </div>
+</header>
+
+<!-- Links to other pages -->
+<!-- Links to other pages -->
+<a href="http://ec2-18-217-156-108.us-east-2.compute.amazonaws.com/survey.html" class="link-success" style="font-size: 1.5rem; color: red;">Go to Survey Form</a>
+
+
+<!-- About Section -->
+<div class="row my-5">
+  <section id="about">
+    <div class="col-md-12 text-center">
+      <img src="WhatsApp Image 2024-09-19 at 20.01.18.jpeg" class="img-fluid rounded shadow-sm mx-auto d-block smaller-image" alt="Yanamadala Sai Chinmayee" style="max-width: 300px;">
+    </div>
+    <div class="col-md-12 text-center">
+      <h2 style="color: #006633; font-size: 2.5rem;">About Me</h2>
+      <p style="font-size: 1.25rem;">Hello! I'm Yanamadala Sai Chinmayee, a passionate computer science student with experience in various technologies and project management. I specialize in Python, PEGA, C/C++, and web development. I am always eager to learn and take on new challenges to enhance my skills.</p>
+      <p style="font-size: 1.25rem;">Feel free to explore my portfolio to see some of the projects I've worked on and my resume.</p>
+    </div>
+  </section>
+</div>
+
+<!-- Education Section -->
+<div class="my-5 text-center">
+  <h2 style="color: #006633;">Education</h2>
+  <p><strong>K.L. University, Hyderabad</strong><br>
+  Bachelor of Technology in Computer Science and Engineering (CGPA: 8.36)<br>
+  2019 - 2023</p>
+  <p><strong>Excellencia Junior College</strong><br>
+  MPC | 70.4%<br>
+  2017 - 2019</p>
+  <p><strong>Jubilee Hills Public School</strong><br>
+  CBSE | CGP: 7.8<br>
+  2012 - 2017</p>
+</div>
+
+<!-- Certifications Section -->
+<div class="my-5 text-center">
+  <section id="certifications">
+    <h3 style="color: #006633;">Certifications</h3>
+    <ul class="list-unstyled">
+      <li>PEGA Certified System Architect</li>
+      <li>PEGA Certified Senior System Architect</li>
+      <li>Automation Anywhere Certified Advanced RPA Professional</li>
+      <li>Fundamentals of Data Analytics</li>
+      <li>AWS Cloud Foundation</li>
+      <li>AWS Academy Cloud Architecting</li>
+    </ul>
+  </section>
+</div>
+
+<!-- Projects Section -->
+<div id="projects" class="my-5 text-center">
+  <h2 style="color: #006633;">Projects</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="project-item">
+        <h3 style="color: #FFCC33;">Portfolio Website</h3>
+        <p>A personal portfolio website built with HTML, CSS, and Bootstrap to showcase my projects and skills.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="project-item">
+        <h3 style="color: #FFCC33;">Movie Recommendation System</h3>
+        <p>A movie recommendation system using Python to suggest movies based on user preferences.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="project-item">
+        <h3 style="color: #FFCC33;">Customer Insurance Payment Prediction</h3>
+        <p>A machine learning project that predicts customer insurance payments using various data science techniques.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer Section -->
+<footer class="footer">
+  <p>Contact: <a href="mailto:chinmayeeyanamadala.01@gmail.com">chinmayeeyanamadala.01@gmail.com</a></p>
+  <p>&copy; 2024 SaiChinmayee Yanamadala rights reserved</p>
+  <img src="gmu-logo.png" alt="University Logo" width="100">
+</footer>
+
+</body>
+</html>
