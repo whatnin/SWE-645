@@ -20,6 +20,7 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
+          type: Loadbalancer
           env:
             - name: DOCKER_DEFAULT_PLATFORM
               value: linux/arm64
