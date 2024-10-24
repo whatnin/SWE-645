@@ -17,4 +17,4 @@ spec:
       targetPort: 443
       protocol: TCP
       name: https
-  type: Loadbalancer
+  type: LoadBalancer
