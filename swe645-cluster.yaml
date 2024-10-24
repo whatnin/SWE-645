@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Config
+clusters:
+- name: "swe645-cluster"
+  cluster:
+    server: "https://ec2-34-238-64-82.compute-1.amazonaws.com/k8s/clusters/c-m-pzvrvt6q"
+    certificate-authority-data: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJ2VENDQ\
+      VdPZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQkdNUnd3R2dZRFZRUUtFeE5rZVc1aGJXbGoKY\
+      kdsemRHVnVaWEl0YjNKbk1TWXdKQVlEVlFRRERCMWtlVzVoYldsamJHbHpkR1Z1WlhJdFkyRkFNV\
+      GN5T1RjegpOakF5TWpBZUZ3MHlOREV3TWpRd01qRXpOREphRncwek5ERXdNakl3TWpFek5ESmFNR\
+      Vl4SERBYUJnTlZCQW9UCkUyUjVibUZ0YVdOc2FYTjBaVzVsY2kxdmNtY3hKakFrQmdOVkJBTU1IV\
+      1I1Ym1GdGFXTnNhWE4wWlc1bGNpMWoKWVVBeE56STVOek0yTURJeU1Ga3dFd1lIS29aSXpqMENBU\
+      VlJS29aSXpqMERBUWNEUWdBRUdnYnV0SE1ST0R4cgo0VmRwVWUxN2RzdWVDazlvYmRoMk92ZjVwL\
+      zd2ZUlkZG9rS3lPb2NtQTlrT0RxMHN1UXFHeFNHenJLM2VMSmZ3Ck54aGFwZy9BRnFOQ01FQXdEZ\
+      1lEVlIwUEFRSC9CQVFEQWdLa01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0hRWUQKVlIwT0JCWUVGR\
+      GZHRnJPODlhZll5S05SMWNqV3o5bWJhaHdmTUFvR0NDcUdTTTQ5QkFNQ0EwZ0FNRVVDSVFDcAp4U\
+      0RvTkliSmtxVE96WHpBSjRBZFRxQk0zakI3MWxrdDJ4RDNBSlNQT1FJZ00zYmlZNHAzNFE0QlVmc\
+      1IrSHFxCkVWWGNNSXlhMS9QSTZCd0pjUUE3NnVBPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0t"
+
+users:
+- name: "swe645-cluster"
+  user:
+    token: "kubeconfig-user-ltptf4vzlz:9pwgvlpzxshfgq58psrcpqtj8sbt8jgvkgd7wwcjqsv8qmbhpr8wz8"
+
+
+contexts:
+- name: "swe645-cluster"
+  context:
+    user: "swe645-cluster"
+    cluster: "swe645-cluster"
+
+current-context: "swe645-cluster"

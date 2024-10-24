@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: survey-service
+  labels:
+    app: surveyapp
+spec:
+  selector:
+    app: surveyapp
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: http
+    - port: 443
+      targetPort: 443
+      protocol: TCP
+      name: https
