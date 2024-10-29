@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: survey-deployment
+  name: deployment
   labels:
     app: surveyapp
 spec:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: survey-hw2-container
-          image: syanama2/survey-hw2:latest
+          image: syanama2/survey-hw2:0.1
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

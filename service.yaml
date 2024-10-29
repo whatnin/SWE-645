@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: survey-service
+  name: service
   labels:
     app: surveyapp
 spec:
   selector:
     app: surveyapp
-    type: NodePort 
+  type: NodePort 
   ports:
     - port: 8080
       targetPort: 8080

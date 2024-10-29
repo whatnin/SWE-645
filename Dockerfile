@@ -1,5 +1,9 @@
-FROM nginx:alpine
+FROM tomcat:9.0
 
-COPY survey.html /usr/share/nginx/html/
+WORKDIR /usr/local/tomcat/webapps/
+
+COPY survey.html /usr/local/tomcat/webapps/ROOT/
 
 EXPOSE 8080
+
+CMD ["catalina.sh", "run"]
