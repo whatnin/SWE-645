@@ -48,8 +48,9 @@ pipeline {
 
     post {
         always {
-            // Archive results, clean workspace, etc.
-            cleanWs()
+            node {
+                cleanWs() // Ensure clean workspace within a node context
+            }
         }
     }
 }
