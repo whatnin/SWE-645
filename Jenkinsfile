@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "my-web-app"
+        DOCKER_IMAGE = "syanama2/surveyform"
         DOCKER_REGISTRY = "sha256:49b9f1b801bb1cab01e82b11454946f974b69c00c115afe6ac8d8deb26848360" // e.g., Docker Hub or private registry
         KUBECONFIG = credentials('docker-desktop') // Replace with Jenkins credential ID for kubeconfig
     }
