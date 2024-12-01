@@ -28,7 +28,7 @@ pipeline {
             steps {
                 // Push the Docker image to a registry
                 script {
-                    docker.withRegistry("https://${DOCKER_REGISTRY}", 'chinmayee2001') {
+                    docker.withRegistry("https://${DOCKER_REGISTRY}", 'syanama2') {
                         docker.image("${DOCKER_IMAGE}").push("latest")
                     }
                 }
