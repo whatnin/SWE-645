@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: survey-deployment
+  labels:
+    app: surveyapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: surveyapp
+  template:
+    metadata:
+      labels:
+        app: surveyapp
+    spec:
+      imagePullSecrets:
+        - name: regcred  
+      containers:
+        - name: survey-hw2-container
+          image: syanama2/surveyform:latest
+          ports:
+            - containerPort: 8080  
