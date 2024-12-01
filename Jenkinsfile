@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    tools {
+        maven 'Maven 3.8.1'
+        jdk 'Java 17'
+    }
     environment {
         DOCKER_IMAGE = "syanama2/surveyform"
         DOCKER_REGISTRY = "docker.io"
@@ -10,13 +14,22 @@ pipeline {
                 checkout scm
             }
         }
+        
+        stage('Build Java Application') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        
         stage('Build Docker Image') {
             steps {
                 script {
+                    // Build Docker image
                     dockerImage = docker.build("${DOCKER_IMAGE}:latest", ".")
                 }
             }
         }
+        
         stage('Push Docker Image') {
             steps {
                 script {
@@ -34,6 +47,7 @@ pipeline {
                 }
             }
         }
+        
         stage('Deploy to Kubernetes') {
             steps {
                 withKubeConfig([credentialsId: 'docker-desktop']) {
@@ -45,6 +59,7 @@ pipeline {
             }
         }
     }
+    
     post {
         always {
             cleanWs()
