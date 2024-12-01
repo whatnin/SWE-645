@@ -1,31 +1,37 @@
 pipeline {
     agent any
-    tools {
-        maven 'Maven 3.8.1'
-        jdk 'Java 17'
-    }
     environment {
         DOCKER_IMAGE = "syanama2/surveyform"
-        DOCKER_REGISTRY = "docker.io"
+        DOCKER_TAG = "${env.BUILD_ID}"
+        KUBECONFIG = "${WORKSPACE}/survey.yaml"
     }
     stages {
-        stage('Checkout Code') {
+        stage('Clone Repository') {
             steps {
-                checkout scm
+                git branch: 'main', url: 'https://github.com/whatnin/SWE-645.git'
             }
         }
         
-        stage('Build Java Application') {
+        stage('Build Project') {
             steps {
-                sh 'mvn clean package'
+                script {
+                    dir('survey') {
+                        sh 'mvn clean package -DskipTests'
+                    }
+                }
+            }
+        }
+        
+        stage('Verify JAR file') {
+            steps {
+                sh 'ls -l survey/target/'
             }
         }
         
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Build Docker image
-                    dockerImage = docker.build("${DOCKER_IMAGE}:latest", ".")
+                    dockerImage = docker.build("${DOCKER_IMAGE}:${DOCKER_TAG}", "-f survey/Dockerfile .")
                 }
             }
         }
@@ -33,16 +39,9 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    // Use Jenkins credentials with Docker Registry
-                    withCredentials([usernamePassword(
-                        credentialsId: 'dockerhub-credentials', 
-                        usernameVariable: 'syanama2', 
-                        passwordVariable: 'Chinmayee@123'
-                    )]) {
-                        sh """
-                            docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-                            docker push ${DOCKER_IMAGE}:latest
-                        """
+                    docker.withRegistry('https://index.docker.io/v1/', 'docker-credentials') {
+                        dockerImage.push()
+                        dockerImage.push('latest')
                     }
                 }
             }
@@ -50,11 +49,19 @@ pipeline {
         
         stage('Deploy to Kubernetes') {
             steps {
-                withKubeConfig([credentialsId: 'docker-desktop']) {
-                    sh '''
-                        kubectl apply -f deployment.yaml
-                        kubectl apply -f service.yaml
-                    '''
+                script {
+                    withCredentials([string(credentialsId: 'kubernetes-token', variable: 'TOKEN')]) {
+                        sh """
+                            sed -i 's|token:.*|token: ${TOKEN}|g' survey.yaml
+                        """
+                    }
+                    
+                    withEnv(["KUBECONFIG=${WORKSPACE}/survey.yaml"]) {
+                        sh 'kubectl apply -f deployment.yaml'
+                        sh 'kubectl apply -f service.yaml'
+                        sh 'kubectl rollout restart deployment/survey-deployment'
+                        sh 'kubectl rollout status deployment/survey-deployment'
+                    }
                 }
             }
         }
@@ -64,11 +71,11 @@ pipeline {
         always {
             cleanWs()
         }
-        failure {
-            echo "Pipeline failed. Sending notifications..."
-        }
         success {
-            echo "Pipeline completed successfully!"
+            echo 'Pipeline executed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
         }
     }
 }
