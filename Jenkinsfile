@@ -3,42 +3,33 @@ pipeline {
     environment {
         DOCKER_IMAGE = "syanama2/surveyform"
         DOCKER_REGISTRY = "docker.io"
-        DOCKER_CREDENTIALS_ID = 'syanama2'
     }
     stages {
         stage('Checkout Code') {
             steps {
-                // Explicitly specify the branch and use checkout scm
-                checkout([
-                    $class: 'GitSCM', 
-                    branches: [[name: '*/main']], 
-                    userRemoteConfigs: [[
-                        url: 'https://github.com/whatnin/SWE-645.git'
-                    ]]
-                ])
+                checkout scm
             }
         }
         stage('Build Docker Image') {
             steps {
                 script {
-                    try {
-                        dockerImage = docker.build("${DOCKER_IMAGE}:latest", ".")
-                    } catch (Exception e) {
-                        error "Docker build failed: ${e.message}"
-                    }
+                    dockerImage = docker.build("${DOCKER_IMAGE}:latest", ".")
                 }
             }
         }
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://docker.io', "${DOCKER_CREDENTIALS_ID}") {
-                        try {
-                            dockerImage.push()
-                            dockerImage.push('latest')
-                        } catch (Exception e) {
-                            error "Docker push failed: ${e.message}"
-                        }
+                    // Use Jenkins credentials with Docker Registry
+                    withCredentials([usernamePassword(
+                        credentialsId: 'dockerhub-credentials', 
+                        usernameVariable: 'syanama2', 
+                        passwordVariable: 'Chinmayee@123'
+                    )]) {
+                        sh """
+                            docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+                            docker push ${DOCKER_IMAGE}:latest
+                        """
                     }
                 }
             }
@@ -46,16 +37,10 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 withKubeConfig([credentialsId: 'docker-desktop']) {
-                    script {
-                        try {
-                            sh '''
-                                kubectl apply -f deployment.yaml
-                                kubectl apply -f service.yaml
-                            '''
-                        } catch (Exception e) {
-                            error "Kubernetes deployment failed: ${e.message}"
-                        }
-                    }
+                    sh '''
+                        kubectl apply -f deployment.yaml
+                        kubectl apply -f service.yaml
+                    '''
                 }
             }
         }
