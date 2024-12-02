@@ -24,7 +24,7 @@ pipeline {
         
         stage('Verify JAR file') {
             steps {
-                sh 'ls -l survey/target/'
+                sh 'ls -l swe-645/target/'
             }
         }
         
