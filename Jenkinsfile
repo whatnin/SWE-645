@@ -31,7 +31,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("syanama2/surveyform:latest", "-f survey/Dockerfile .")
+                    dockerImage = docker.build("syanama2/surveyform:latest", "-f swe-645/Dockerfile .")
                 }
             }
         }
