@@ -6,7 +6,7 @@ WORKDIR /app
 ARG JAR_FILE=swe-645/target/survey-0.0.1-SNAPSHOT.jar
 
 # Copy the JAR file correctly
-COPY ${JAR_FILE} survey-app.jar
+COPY ${JAR_FILE} survey-0.0.1-SNAPSHOT.jar
 
 # Fix the ENTRYPOINT
-ENTRYPOINT ["java", "-jar", "survey-app.jar"]
+ENTRYPOINT ["java", "-jar", "survey-0.0.1-SNAPSHOT.jar"]
