@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
-
+    @Restcontroller
 public class SurveyController {
     @Autowired
     private SurveyRepository surveyRepository;
