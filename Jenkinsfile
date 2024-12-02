@@ -15,7 +15,7 @@ pipeline {
         stage('Build Project') {
             steps {
                 script {
-                    dir('survey') {
+                    dir('swe-645') {
                         sh 'mvn clean package -DskipTests'
                     }
                 }
