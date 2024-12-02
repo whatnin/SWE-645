@@ -1,8 +1,9 @@
 HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# Ignore everything in the target folder
+target/*
+
+# Allow .jar files inside the target folder
+!target/*.jar
 
 ### STS ###
 .apt_generated
